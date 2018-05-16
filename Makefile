@@ -2,14 +2,15 @@
 CUDA_PATH = /usr/local/cuda
 NVCC = $(CUDA_PATH)/bin/nvcc
 CUDA_INCLUDE = $(CUDA_PATH)/include
-CUSP = ../cusplibrary
+#CUSP = ../cusplibrary
+CUSP = /usr/local/cuda/include/cusp
 
 CPP_FILES := $(shell find $(SOURCEDIR) -name '*.cpp')
 OBJ_FILES := $(addprefix obj/,$(CPP_FILES:.cpp=.o))
 
-CC_FLAGS = -O2 -I$(CUDA_INCLUDE) -I$(CUSP)
-
-COMMON = -O2 -arch=sm_20 --ptxas-options="--maxrregcount=32" $(OBJ_FILES) -I$(CUDA_INCLUDE) -I$(CUSP)
+CC_FLAGS = -O2 -g -I$(CUDA_INCLUDE) -I$(CUSP)
+#Remove -g -G for no debug
+COMMON = -O2 -arch=sm_20 -g -G --ptxas-options="--maxrregcount=32" $(OBJ_FILES) -I$(CUDA_INCLUDE) -I$(CUSP)
 
 all: spmv prep cusp
 

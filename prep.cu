@@ -67,15 +67,16 @@ void preprocessing ( MMFormatInput &f ) {
     }
 
     cout << "Max: " << max << ", Min:" << min << ", Median: " << median << ", Mean:" << mean << ", Std:" << std << ", Theta: " << theta << endl;
-
+/*
     Timer timer;
     timer.start();
     CutOffFinder<T> cof(f, sortcol);
     cof.theta = theta;
-    cof.execute(verbose);
+   cof.execute(verbose);
     cout << "Spending " << timer.stop() << "s in finding cutoff" << endl;
     cof.printResult(filename);
     cof.writeCache(filename);
+*/
 }
 
 int main(int argc, char* argv[]){
@@ -104,7 +105,7 @@ int main(int argc, char* argv[]){
         }
 				
 	} catch(std::exception& e) {
-        cerr << e.what() << endl;
+	        cerr << e.what() << endl;
         return 1;
     }  
 	
